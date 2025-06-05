@@ -52,7 +52,6 @@ class ResultsPage
     browse_term = @driver.find_element(xpath: "//*[contains(@resource-id, 'ui_components_toolbar_title_toolbar')]").attribute("text")
     loop do
       visible_results = @driver.find_elements(xpath: "//*[@resource-id='com.mercadolibre:id/search_component_compose_view']/android.view.View/android.view.View/android.view.View")
-      puts "Elementos visibles en esta iteración: #{visible_results.size}"
 
       visible_results.each do |result|
         begin
@@ -62,17 +61,17 @@ class ResultsPage
           price = price_el&.attribute("text")
 
           title = nil
-          index_price = text_views.index(price_el)
-  
-          candidates = index_price ? text_views[0...index_price].reverse : text_views.reverse
-          title = candidates.find do |el|
+          title = text_views.find do |el|
             text = el.attribute("text")&.strip
             next if text.nil? || text.empty?
             next if text == text.upcase
-            next if text.downcase.match?(/mes|env[ií]o|cuotas|inter[eé]s/)
-  
+            next if text.include?("$")
+            normalized_text = text.downcase.gsub(/\s+/, "")
+            normalized_term = browse_term.downcase.gsub(/\s+/, "")
+            next unless normalized_text.include?(normalized_term)
             true
           end&.attribute("text")
+          
   
           puts "Título: #{title} | Precio: #{price}"
           processed += 1
