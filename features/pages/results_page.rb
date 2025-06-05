@@ -35,7 +35,6 @@ class ResultsPage
           return true
         end
       rescue Selenium::WebDriver::Error::NoSuchElementError
-        puts "Elemento '#{element_text}' no encontrado."
       end
       doScroll()
       tries -= 1
@@ -112,7 +111,7 @@ class ResultsPage
     screen_width = @driver.window_size.width
     screen_height = @driver.window_size.height
 
-    swipe_distance = (screen_height * 0.1).to_i
+    swipe_distance = (screen_height * 0.09).to_i
 
     until fully_out_of_view?(element) || attempts >= max_attempts
       start_x = screen_width / 2
@@ -122,7 +121,7 @@ class ResultsPage
     finger = driver.action.add_pointer_input(:touch, 'finger1')
     finger.create_pointer_move(x: start_x, y: start_y, duration: 0, origin: :viewport)
     finger.create_pointer_down(:left)
-    finger.create_pointer_move(x: start_x, y: end_y, duration: 2, origin: :viewport)
+    finger.create_pointer_move(x: start_x, y: end_y, duration: 1, origin: :viewport)
     finger.create_pointer_up(:left)
     driver.perform_actions([finger])
 

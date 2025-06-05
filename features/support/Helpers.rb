@@ -17,8 +17,6 @@ module Helpers
     start_y = (size.height / 10) * 9
     end_y = size.height / 10
 
-    puts "Desplazando desde (#{start_x}, #{start_y}) hasta (#{start_x}, #{end_y})"
-
     finger = driver.action.add_pointer_input(:touch, 'finger1')
     finger.create_pointer_move(x: start_x, y: start_y, duration: 0, origin: :viewport)
     finger.create_pointer_down(:left)

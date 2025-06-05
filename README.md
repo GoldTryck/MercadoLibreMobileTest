@@ -1,4 +1,4 @@
-# Swipe Project
+# Mercado libre mobile test
 
 This project is an automated testing suite for Android devices, built using **Ruby**, **Appium**, and **Cucumber**.
 
@@ -14,8 +14,8 @@ This project is an automated testing suite for Android devices, built using **Ru
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/proyecto_swipe.git
-    cd proyecto_swipe
+    git clone https://github.com/GoldTryck/MercadoLibreMobileTest
+    cd MercadoLibreMobileTest
     ```
 
 2. Install Ruby dependencies:
@@ -58,13 +58,14 @@ Test results will be displayed in the terminal.
 ## Project Structure
 
 ```
-proyecto_swipe/
+MercadoLibreMobileTest/
 ├── features/
 │   ├── step_definitions/
 │   ├── support/
     ├──pages/
 │   └── *.feature
 ├── Gemfile
+├── .gitignore
 └── README.md
 ```
 
