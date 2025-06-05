@@ -53,6 +53,13 @@ Adjust the values as needed for your environment.
     cucumber
     ```
 
+## Reports
+To generate a report of the test execution, run:
+
+```bash
+cucumber --publish
+```
+
 Test results will be displayed in the terminal.
 
 ## Project Structure
